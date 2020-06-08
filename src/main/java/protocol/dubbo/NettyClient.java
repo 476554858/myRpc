@@ -46,9 +46,10 @@ public class NettyClient {
             String result = (String)nettyClientHandler.getResponse();
             System.out.println("reuslt:"+result);
             channel = cf.channel();
-            return result;
             //8.关闭连接（异步非阻塞）
-//        cf.channel().closeFuture().sync();
+            cf.channel().closeFuture().sync();
+            return result;
+
 
         } catch (Exception e) {
             e.printStackTrace();
