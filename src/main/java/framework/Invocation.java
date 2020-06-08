@@ -3,10 +3,15 @@ package framework;
 import java.io.Serializable;
 
 public class Invocation implements Serializable{
+
+//    private static final long serialVersionUID = 3245563747666730604L;
     private String interfaceName;
     private String methodName;
     private Object[] params;
     private Class[] paramTypes;
+
+    public Invocation() {
+    }
 
     public Invocation(String interfaceName, String methodName, Object[] params, Class[] paramTypes) {
         this.interfaceName = interfaceName;

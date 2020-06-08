@@ -13,10 +13,10 @@ public class ProxyFactory<T> {
        return (T)Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                HttpClient httpClient = new HttpClient();
+                Protocol protocol = ProtocolFactory.getProtocol();
                 Invocation invocation = new Invocation(HelloService.class.getName(),"sayHello",new Object[]{"bug zhang"},new Class[]{String.class});
                 URL url = Register.random(interfaceClass.getName());
-                return httpClient.post(url.getHostName(),url.getPort(),invocation);
+                return protocol.send(url,invocation);
             }
         });
     }
